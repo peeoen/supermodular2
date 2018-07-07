@@ -2,17 +2,17 @@ import { AgmCoreModule } from '@agm/core';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { OneSignal } from '@ionic-native/onesignal';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { Config } from '../config';
-
 import { ComponentsModule } from '../pages/components/components.module';
 import { GoogleMapsModule } from '../pages/google-maps/google-maps.module';
 import { HomeModule } from '../pages/home/home.module';
 import { SlideBoxModule } from '../pages/slide-box/slide-box.module';
 import { WordpressModule } from '../pages/wordpress/wordpress.module';
 import { MyApp } from './app.component';
-import { OneSignal } from '@ionic-native/onesignal';
+
 
 @NgModule({
 	declarations: [
@@ -37,7 +37,7 @@ import { OneSignal } from '@ionic-native/onesignal';
 	providers: [
 		Config,
 		StatusBar,
-		OneSignal,
+		OneSignal
 	]
 })
 export class AppModule {
