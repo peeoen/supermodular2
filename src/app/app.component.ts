@@ -49,11 +49,11 @@ export class MyApp {
 				this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
 				this.oneSignal.handleNotificationReceived().subscribe(
 					data => this.onPushReceived(data.payload),
-					(error: any) => console.log(error)
+					(error: any) => console.log('handleNotificationReceived', error)
 				);
 				this.oneSignal.handleNotificationOpened().subscribe(
 					data => this.onPushOpened(data.notification.payload),
-					(error: any) => console.log(error)
+					(error: any) => console.log('onPushOpened', error)
 				);
 				this.oneSignal.endInit();
 			}
@@ -66,13 +66,13 @@ export class MyApp {
 	}
 
 	private onPushReceived(payload: OSNotificationPayload) {
-		console.log('push received');
+		console.log('push received', payload);
 		
 		alert('Push recevied:' + payload.body);
 	}
 
 	private onPushOpened(payload: OSNotificationPayload) {
-		console.log('onPushOpened');
+		console.log('onPushOpened', payload);
 		alert('Push opened: ' + payload.body);
 	}
 }
