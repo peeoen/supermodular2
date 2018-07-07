@@ -47,8 +47,14 @@ export class MyApp {
 			if (isCordovaAvailable()) {
 				this.oneSignal.startInit(oneSignalAppId, sender_id);
 				this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
-				this.oneSignal.handleNotificationReceived().subscribe(data => this.onPushReceived(data.payload));
-				this.oneSignal.handleNotificationOpened().subscribe(data => this.onPushOpened(data.notification.payload));
+				this.oneSignal.handleNotificationReceived().subscribe(
+					data => this.onPushReceived(data.payload),
+					(error: any) => console.log(error)
+				);
+				this.oneSignal.handleNotificationOpened().subscribe(
+					data => this.onPushOpened(data.notification.payload),
+					(error: any) => console.log(error)
+				);
 				this.oneSignal.endInit();
 			}
 		});
@@ -60,10 +66,13 @@ export class MyApp {
 	}
 
 	private onPushReceived(payload: OSNotificationPayload) {
+		console.log('push received');
+		
 		alert('Push recevied:' + payload.body);
 	}
 
 	private onPushOpened(payload: OSNotificationPayload) {
+		console.log('onPushOpened');
 		alert('Push opened: ' + payload.body);
 	}
 }
